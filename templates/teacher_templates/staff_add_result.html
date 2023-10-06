@@ -1,0 +1,125 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student Result</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="roll no"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.add-result {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-result:hover {
+    background-color: #0056b3;
+}
+    </style>
+    
+   
+
+    
+    <body>
+        <div class="container">
+        <h2>MARKS</h2>
+        <form method="post" action="{% url 'staff_add_result' %}"></form>
+        {%csrf_token%}
+        
+            
+            <table>
+                
+                <tr>
+                    <label for="Student_ Name">Student Name</label>
+                    <input type="text" name="Student Name" required>
+                    <label for="Roll No">Roll No</label>
+                    <input type="number" name="Roll No" required>
+                    <select name="Mathematics" id="Mathematics">
+                        <option value="Apllied Mathematics">Applied Mathematics</option>
+                        <option value="Psychology">Psychology</option>
+                        <option value="Mathematics">Mathematics</option>
+                    </select>
+                    <label for="Elective 2">Elective 1</label>
+                    <select name="Computer Science" id="Computer Science">
+                        <option value="Biology">Biology</option>
+                        <option value="Economics">Economics</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <label for="Marks">Marks</label>
+                    <input type="number" max="25" name="Marks" required/>
+                    
+                    </select>
+                    <label for="Chemistry">Chemistry</label>
+                    <input type="text" name="Chemistry" required>
+                    <label for="Physics">Physics</label>
+                    <input type="text" name="Physics" required>
+                    <label for="English">English</label>
+                    <input type="text" name="English" required>
+
+                    
+                    
+                </tr>
+            </table>
+            
+        
+        
+            <tfoot>
+            <tr>
+                <label for="Total Marks">Total Marks</label>
+                <input type="number" name="Total Marks" required>
+                <label for="CGPA">CGPA</label>
+                <input type="number" name="CGPA" required>
+            </tr>
+            <button type="submit" class="update-button">Update Result</button>
+        </form>
+        
+      </table>
+    </div>
+    <link rel="stylesheet" type="text/css" href="{styles.css}">
+  </body>
+</html>
+
+
+
+

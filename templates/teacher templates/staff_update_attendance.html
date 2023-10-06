@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Attendance Update</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.attendance-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.update-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.update-button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="attendance-container">
+        <h1>Update Student Attendance</h1>
+        <form method="post" action="{% url 'staff_update_attendance' %}">
+        {%csrf_token%}
+            <!-- Add your form fields for staff attendance update here -->
+            <label for="date">Date:</label>
+            <input type="date" name="date" required>
+
+            <label for="staff">Student:</label>
+            <select name="staff" required>
+                <option value="staff1">Staff 1</option>
+                <option value="staff2">Staff 2</option>
+                <!-- Add more staff options as needed -->
+            </select>
+
+            <label for="status">Attendance Status:</label>
+            <select name="status" required>
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+                <!-- Add more status options as needed -->
+            </select>
+
+            <button type="submit" class="update-button">Update Attendance</button>
+        </form>
+    </div>
+    <link rel="stylesheet" type="text/css" href="{styles.css}">
+
+
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page in HTML</title>
+    <style>
+        body {
+          font-family:sans-serif;
+          text-align: center;
+          background-color: #FEFF9E;
+          font-size: 18px;
+        }
+
+        h1{
+          text-align: center;
+          font-family:sans-serif;
+        }
+
+        input[type=text],input[type=password]{
+          width: 100%;
+          margin: 10px 0;
+          border-radius: 5px;
+          padding: 15px 18px;
+          box-sizing: border-box;
+        }
+
+        button {
+          background-color: #030804;
+          color: white;
+          padding: 14px 20px;
+          border-radius: 5px;
+          margin: 7px 0;
+          width: 100%;
+          font-size: 18px;
+        }
+
+        button:hover {
+          opacity: 0.6;
+          cursor: pointer;
+        }
+
+        #logo {
+          margin-top: 50px;
+        }
+    
+        #logo img {
+          width: 150px; 
+          height: auto;
+        }
+        
+        #appname {
+          font-size: 24px;
+          margin-top: 25px;
+          color: #010061
+        }
+
+        form{
+          width:35rem;
+          margin: auto;
+          color:whitesmoke;
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+          background-color: rgba(11, 15, 13, 0.582);
+          border-radius: 12px;
+          border: 1px solid rgba(255, 255, 255, 0.125);
+          padding: 20px 25px
+        }
+
+        .headingsContainer{
+          text-align: center;
+        }
+        .mainContainer{
+          padding: 16px;
+        }
+
+        .subcontainer{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .subcontainer a{
+          font-size: 16px;
+          margin-bottom: 12px;
+        }
+
+
+
+        
+        <link rel="stylesheet" type="test/css" href="{static 'css/test.css' %}"/>
+      </style>
+</head>
+<body>
+  {% if success_message %}
+    <div class="success-message">
+        <p>{{ success_message }}</p>
+    </div>
+    {% endif %}
+    <div id="logo">
+        <img src="https://i.pinimg.com/originals/ff/d5/10/ffd510382a48bf95d3071091b52f0dc8.jpg" alt="Logo">
+    </div>
+    <div id="appname">
+        <h1>Eduverge</h1>
+    </div>
+    <!--<h1>Eduverge</h1>-->
+    <form action="/signin/" method="post">
+        {% csrf_token %}
+        <!-- Headings for the form -->
+        <div class="headingsContainer">
+            <h3>Log-in to Get Started.</h3>
+            <!--<p>Log-In to Get Started.</p>-->
+        </div>
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Username/email -->
+            <label for="username">Your username</label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
+            <br><br>
+
+            <!-- Password -->
+            <label for="pass1">Your password</label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <!-- sub container for the checkbox and forgot password link -->
+            <div class="subcontainer">
+                <label>
+                  <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+                <p class="forgotpsd"> <a href="#">Forgot Password?</a></p>
+            </div>
+
+
+            <!-- Submit button -->
+            
+            <div id="buttons">
+              <button type="submit" name="signin">Login</button>
+            </div>
+            
+
+            <!-- Sign up link -->
+            <p class="register">Not a member?  <a href="{% url 'register' %}">Register here!</a></p>
+
+        </div>
+
+    </form>
+    {% if error_message %}
+    <div class="error">
+        <p>{{ error_message }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
